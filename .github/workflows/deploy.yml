@@ -1,0 +1,30 @@
+name: Deploy Static Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js (optional, if you're using tools like npm or frameworks)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies (if needed)
+        run: |
+          if [ -f package.json ]; then npm install; fi
+
+      - name: Build (optional)
+        run: |
+          echo "Add build steps here if needed"
+
+      - name: Deploy (handled by GitHub Pages automatically)
+        run: echo "Deployment triggered by pushing to main branch"
